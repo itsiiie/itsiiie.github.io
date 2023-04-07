@@ -87,7 +87,7 @@ let geocode = {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(success, console.error);
     } else {
-      weather.fetchWeather("Dhanbad");
+      weather.fetchWeather("Jaipur");
     }
   },
 };
