@@ -61,13 +61,11 @@ let geocode = {
     request.open("GET", request_url, true);
 
     request.onload = function () {
-
       if (request.status == 200) {
         var data = JSON.parse(request.responseText);
         weather.fetchWeather(data.results[0].components.city);
-        console.log(data.results[0].components.city)
+        console.log(data.results[0].components.city);
       } else if (request.status <= 500) {
-
         console.log("unable to geocode! Response code: " + request.status);
         var data = JSON.parse(request.responseText);
         console.log("error msg: " + data.status.message);
@@ -80,19 +78,18 @@ let geocode = {
       console.log("unable to connect to server");
     };
 
-    request.send(); 
+    request.send();
   },
-  getLocation: function() {
-    function success (data) {
+  getLocation: function () {
+    function success(data) {
       geocode.reverseGeocode(data.coords.latitude, data.coords.longitude);
     }
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(success, console.error);
-    }
-    else {
+    } else {
       weather.fetchWeather("Dhanbad");
     }
-  }
+  },
 };
 
 document.querySelector(".search button").addEventListener("click", function () {
@@ -107,7 +104,7 @@ document
     }
   });
 
-weather.fetchWeather("Dhanbad");
+weather.fetchWeather("Jaipur");
 
 document
   .querySelector(".search-bar")
